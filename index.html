@@ -153,231 +153,256 @@
             justify-content: center;
             color: white;
             font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
         }
 
-        .hints-counter {
-            font-size: 1.2em;
-            color: #f39c12;
-            font-weight: bold;
-        }
-
-        /* Sala del juego */
+        /* Sala genérica */
         .room {
-            background: rgba(255,255,255,0.98);
+            background: rgba(255,255,255,0.95);
             border-radius: 20px;
-            padding: 40px;
+            padding: 30px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-            min-height: 500px;
-            position: relative;
         }
 
         .room-title {
-            text-align: center;
             color: #667eea;
-            font-size: 2.5em;
+            text-align: center;
             margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            font-size: 2em;
         }
 
         .room-subtitle {
             text-align: center;
             color: #666;
-            font-size: 1.2em;
             margin-bottom: 30px;
         }
 
         .puzzle-container {
-            margin: 30px 0;
+            min-height: 300px;
+        }
+
+        /* Botones */
+        .btn {
+            padding: 15px 30px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 5px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+        }
+
+        .btn-hint {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .action-buttons {
+            text-align: center;
+            margin-top: 30px;
         }
 
         /* Biblioteca */
         .books-shelf {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
         }
 
         .book {
-            height: 200px;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s;
+            width: 70px;
+            height: 100px;
+            border-radius: 5px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2em;
             color: white;
             font-weight: bold;
-            text-align: center;
-            padding: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: transform 0.3s;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            font-size: 0.9em;
+            box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
         }
 
         .book:hover {
-            transform: translateY(-10px) scale(1.05);
+            transform: translateY(-10px);
         }
 
-        .book-red { background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%); }
-        .book-blue { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
-        .book-green { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
-        .book-purple { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
-        .book-orange { background: linear-gradient(135deg, #ff9a56 0%, #ffcc70 100%); }
+        .book-red { background: linear-gradient(180deg, #e74c3c, #c0392b); }
+        .book-blue { background: linear-gradient(180deg, #3498db, #2980b9); }
+        .book-green { background: linear-gradient(180deg, #2ecc71, #27ae60); }
+        .book-purple { background: linear-gradient(180deg, #9b59b6, #8e44ad); }
+        .book-orange { background: linear-gradient(180deg, #e67e22, #d35400); }
 
         .text-fragment {
-            background: #fff3cd;
-            border: 2px solid #ffc107;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            margin: 10px 0;
             border-radius: 10px;
-            padding: 20px;
-            margin: 15px 0;
-            cursor: move;
+            cursor: grab;
+            border: 2px dashed #ccc;
             transition: all 0.3s;
-            font-size: 1.1em;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
         }
 
         .text-fragment:hover {
-            transform: scale(1.02);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            background: #e9ecef;
+            border-color: #667eea;
         }
 
-        .text-fragment.placed {
-            opacity: 0.6;
-            cursor: not-allowed;
+        .text-fragment.dragging {
+            opacity: 0.5;
         }
 
         .drop-zone {
-            background: #f8f9fa;
-            border: 3px dashed #adb5bd;
-            border-radius: 10px;
+            min-height: 200px;
+            background: #f0f0f0;
+            border: 3px dashed #ccc;
+            border-radius: 15px;
             padding: 20px;
-            min-height: 100px;
-            margin: 10px 0;
-            transition: all 0.3s;
+            margin-top: 20px;
         }
 
         .drop-zone.drag-over {
-            background: #e7f3ff;
-            border-color: #4facfe;
-        }
-
-        .drop-zone.filled {
-            background: #d4edda;
-            border-color: #28a745;
+            border-color: #667eea;
+            background: #e8e8ff;
         }
 
         /* Laboratorio */
-        .lab-table {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 25px;
-            margin: 30px 0;
-        }
-
-        .math-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-            transition: all 0.3s;
-        }
-
-        .math-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .math-problem {
-            font-size: 1.5em;
-            margin-bottom: 20px;
-            font-weight: bold;
-        }
-
-        .math-input {
-            width: 100%;
-            padding: 15px;
-            font-size: 1.3em;
-            border: none;
-            border-radius: 10px;
-            text-align: center;
-            margin-top: 10px;
-        }
-
-        .check-btn {
-            background: #38ef7d;
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            font-size: 1.1em;
-            border-radius: 10px;
-            cursor: pointer;
-            margin-top: 15px;
-            transition: all 0.3s;
-        }
-
-        .check-btn:hover {
-            background: #11998e;
-        }
-
-        /* Gimnasio */
-        .tangram-container {
+        .operation-item {
             background: #f8f9fa;
+            padding: 20px;
+            margin: 15px 0;
             border-radius: 15px;
-            padding: 30px;
-            margin: 30px 0;
-        }
-
-        .pattern-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-            margin: 30px 0;
-        }
-
-        .pattern-item {
-            aspect-ratio: 1;
-            border-radius: 15px;
-            cursor: pointer;
-            transition: all 0.3s;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3em;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            gap: 15px;
+            font-size: 1.5em;
+            flex-wrap: wrap;
         }
 
-        .pattern-item:hover {
+        .operation-input {
+            width: 100px;
+            padding: 10px;
+            font-size: 1.2em;
+            border: 3px solid #667eea;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        /* Gimnasio */
+        .pattern-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 15px;
+            max-width: 600px;
+            margin: 30px auto;
+        }
+
+        .pattern-item {
+            width: 100%;
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5em;
+            background: #f8f9fa;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .pattern-item.mystery {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            font-weight: bold;
+        }
+
+        .pattern-options {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .pattern-option {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            background: #f8f9fa;
+            border: 3px solid #ddd;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .pattern-option:hover {
+            border-color: #667eea;
             transform: scale(1.1);
         }
 
-        /* Sala de Ciencias */
-        .science-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
+        .pattern-option.selected {
+            border-color: #667eea;
+            background: #e8e8ff;
+        }
+
+        /* Ciencias */
+        .science-question {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        .science-question h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .science-options {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
         }
 
         .science-card {
+            padding: 15px 25px;
             background: white;
             border: 3px solid #ddd;
-            border-radius: 15px;
-            padding: 20px;
-            text-align: center;
+            border-radius: 10px;
             cursor: pointer;
             transition: all 0.3s;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
         }
 
         .science-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            border-color: #667eea;
         }
 
         .science-card.selected {
-            border-color: #4facfe;
-            background: #e7f3ff;
+            border-color: #667eea;
+            background: #e8e8ff;
         }
 
         .science-card.correct {
@@ -393,105 +418,83 @@
         /* Sala de Candados */
         .padlock-container {
             display: flex;
+            gap: 30px;
             justify-content: center;
-            gap: 40px;
             flex-wrap: wrap;
-            margin: 40px 0;
+            margin: 30px 0;
         }
 
         .padlock {
-            background: linear-gradient(135deg, #434343 0%, #000000 100%);
-            border-radius: 20px;
+            background: linear-gradient(145deg, #f0f0f0, #d5d5d5);
             padding: 30px;
+            border-radius: 20px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
             min-width: 200px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
         }
 
         .padlock-number {
-            font-size: 3em;
+            font-size: 2.5em;
             font-weight: bold;
-            color: #FFD700;
-            background: #333;
-            padding: 15px 25px;
-            border-radius: 10px;
+            color: #333;
             letter-spacing: 10px;
-            font-family: monospace;
-            margin-bottom: 20px;
-            border: 3px solid #666;
+            margin-bottom: 15px;
+            font-family: 'Courier New', monospace;
         }
 
         .padlock-hint {
-            color: #aaa;
+            color: #666;
             font-size: 0.95em;
-            line-height: 1.6;
-            margin-top: 10px;
-        }
-
-        .final-padlock {
-            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-            padding: 40px;
-        }
-
-        .final-padlock .padlock-number {
-            background: #222;
+            line-height: 1.4;
         }
 
         .padlock-input {
             width: 60px;
             height: 70px;
-            font-size: 2.5em;
+            font-size: 2em;
             text-align: center;
-            border: 3px solid #FFD700;
+            border: 3px solid #667eea;
             border-radius: 10px;
-            background: #222;
-            color: #FFD700;
-            font-family: monospace;
             margin: 0 5px;
         }
 
         /* Sala de Familia */
         .family-question-card {
-            background: linear-gradient(135deg, #ff9a56 0%, #ffcc70 100%);
-            border-radius: 20px;
-            padding: 30px;
-            margin: 30px 0;
-            text-align: center;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
         }
 
         .family-question {
-            font-size: 1.4em;
+            font-size: 1.2em;
             color: #333;
-            margin-bottom: 25px;
+            margin-bottom: 15px;
             font-weight: 500;
         }
 
         .family-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .family-option {
+            padding: 12px 20px;
             background: white;
             border: 3px solid #ddd;
-            border-radius: 12px;
-            padding: 20px;
+            border-radius: 10px;
             cursor: pointer;
             transition: all 0.3s;
-            font-size: 1.1em;
         }
 
         .family-option:hover {
-            transform: translateY(-3px);
             border-color: #667eea;
-            background: #f0f4ff;
         }
 
         .family-option.selected {
-            border-color: #4facfe;
-            background: #e7f3ff;
+            border-color: #667eea;
+            background: #e8e8ff;
         }
 
         .family-option.correct {
@@ -504,199 +507,386 @@
             background: #f8d7da;
         }
 
-        /* Sala del Tesoro */
-        .treasure-room {
+        /* Sala de Memoria */
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            max-width: 500px;
+            margin: 30px auto;
+        }
+
+        .memory-card {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5em;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        .memory-card::before {
+            content: '❓';
+            position: absolute;
+        }
+
+        .memory-card.flipped, .memory-card.matched {
+            background: white;
+            border: 3px solid #667eea;
+        }
+
+        .memory-card.flipped::before, .memory-card.matched::before {
+            content: none;
+        }
+
+        .memory-card.matched {
+            background: #d4edda;
+            border-color: #28a745;
+            cursor: default;
+        }
+
+        .memory-card-content {
+            display: none;
+        }
+
+        .memory-card.flipped .memory-card-content,
+        .memory-card.matched .memory-card-content {
+            display: block;
+        }
+
+        .memory-stats {
             text-align: center;
+            margin: 20px 0;
+            font-size: 1.2em;
+        }
+
+        /* Sala del Ahorcado */
+        .hangman-container {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+
+        .balloon-container {
+            width: 200px;
+            height: 250px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .balloon {
+            font-size: 8em;
+            transition: all 0.5s;
+            filter: hue-rotate(0deg);
+        }
+
+        .balloon.stage-1 { transform: scale(1.1); filter: hue-rotate(30deg); }
+        .balloon.stage-2 { transform: scale(1.2); filter: hue-rotate(60deg); }
+        .balloon.stage-3 { transform: scale(1.3); filter: hue-rotate(90deg); }
+        .balloon.stage-4 { transform: scale(1.4); filter: hue-rotate(120deg); }
+        .balloon.stage-5 { transform: scale(1.5); filter: hue-rotate(150deg); }
+        .balloon.stage-6 { 
+            animation: explode 0.5s forwards;
+        }
+
+        @keyframes explode {
+            0% { transform: scale(1.5); opacity: 1; }
+            50% { transform: scale(2); opacity: 0.5; }
+            100% { transform: scale(0); opacity: 0; }
+        }
+
+        .explosion-text {
+            font-size: 3em;
+            color: #e74c3c;
+            font-weight: bold;
+            animation: shake 0.5s infinite;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        .word-display {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .letter-box {
+            width: 50px;
+            height: 60px;
+            border-bottom: 4px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .keyboard {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            max-width: 500px;
+            margin: 20px auto;
+        }
+
+        .key {
+            width: 45px;
+            height: 45px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(145deg, #f0f0f0, #d5d5d5);
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .key:hover:not(:disabled) {
+            background: linear-gradient(145deg, #667eea, #764ba2);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .key:disabled {
+            opacity: 0.3;
+            cursor: default;
+        }
+
+        .key.correct {
+            background: #28a745;
+            color: white;
+        }
+
+        .key.wrong {
+            background: #dc3545;
+            color: white;
+        }
+
+        .hangman-category {
+            text-align: center;
+            background: #e8e8ff;
+            padding: 10px 20px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        /* Sala de la Balanza */
+        .balance-puzzle {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 20px;
+            margin: 20px 0;
+        }
+
+        .balance-equation {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            font-size: 2em;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .balance-item {
+            font-size: 1.5em;
+        }
+
+        .balance-question {
+            text-align: center;
+            font-size: 1.5em;
+            margin: 30px 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 15px;
+        }
+
+        .balance-options {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .balance-option {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8em;
+            background: white;
+            border: 3px solid #ddd;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .balance-option:hover {
+            border-color: #667eea;
+            transform: scale(1.1);
+        }
+
+        .balance-option.selected {
+            border-color: #667eea;
+            background: #e8e8ff;
+        }
+
+        .balance-option.correct {
+            border-color: #28a745;
+            background: #d4edda;
+        }
+
+        .balance-option.incorrect {
+            border-color: #dc3545;
+            background: #f8d7da;
+        }
+
+        /* Tesoro */
+        .treasure-room {
+            background: linear-gradient(135deg, #f5af19 0%, #f12711 100%);
+            color: white;
+        }
+
+        .treasure-room .room-title {
+            color: white;
+        }
+
+        .treasure-chest {
+            text-align: center;
+            font-size: 8em;
+            animation: float 3s ease-in-out infinite;
         }
 
         .code-input-container {
             display: flex;
+            gap: 10px;
             justify-content: center;
-            gap: 20px;
-            margin: 40px 0;
             flex-wrap: wrap;
+            margin: 30px 0;
         }
 
         .code-digit {
-            width: 70px;
-            height: 90px;
-            font-size: 2.5em;
+            width: 60px;
+            height: 80px;
+            font-size: 2em;
             text-align: center;
-            border: 3px solid #667eea;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 3px solid white;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.2);
+            color: white;
         }
 
-        .treasure-chest {
-            width: 200px;
-            height: 200px;
-            margin: 40px auto;
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        .code-digit::placeholder {
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* Certificado */
+        .certificate {
+            background: linear-gradient(135deg, #f5f5f5, #fff);
+            border: 10px double #FFD700;
+            padding: 40px;
+            text-align: center;
+            max-width: 600px;
+            margin: 50px auto;
             border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 5em;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            animation: pulse 2s ease-in-out infinite;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+        .certificate h2 {
+            color: #667eea;
+            margin: 20px 0;
         }
 
-        /* Botones */
-        .action-buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            margin-top: 30px;
-            flex-wrap: wrap;
+        .certificate-name {
+            font-size: 2em;
+            color: #f5576c;
+            font-style: italic;
+            margin: 20px 0;
         }
 
-        .btn {
-            padding: 15px 40px;
-            font-size: 1.2em;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: bold;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-
-        .btn-hint {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-        }
-
-        .btn-success {
-            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-            color: white;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-        }
-
-        .btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        /* Modal de pista */
+        /* Modal */
         .modal {
-            display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             background: rgba(0,0,0,0.7);
-            z-index: 1000;
+            display: flex;
             align-items: center;
             justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
         }
 
         .modal.show {
-            display: flex;
+            opacity: 1;
+            pointer-events: auto;
         }
 
         .modal-content {
             background: white;
             padding: 40px;
             border-radius: 20px;
-            max-width: 500px;
             text-align: center;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-            animation: slideDown 0.3s;
-        }
-
-        @keyframes slideDown {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+            max-width: 500px;
+            margin: 20px;
         }
 
         .modal-capitulin {
-            font-size: 5em;
-            margin-bottom: 20px;
-        }
-
-        .modal h2 {
-            color: #667eea;
-            margin-bottom: 20px;
-        }
-
-        .modal p {
-            font-size: 1.2em;
-            line-height: 1.8;
-            color: #333;
+            font-size: 4em;
             margin-bottom: 20px;
         }
 
         .close-modal {
-            background: #667eea;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
             color: white;
             border: none;
-            padding: 12px 30px;
+            padding: 15px 30px;
             font-size: 1.1em;
             border-radius: 10px;
             cursor: pointer;
+            margin-top: 20px;
         }
 
-        /* Certificado */
-        .certificate {
-            background: white;
-            padding: 40px;
-            border: 10px solid #FFD700;
-            border-radius: 20px;
-            text-align: center;
-            max-width: 600px;
-            margin: 40px auto;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-        }
-
-        .certificate h2 {
-            color: #667eea;
-            font-size: 2.5em;
-            margin-bottom: 20px;
-        }
-
-        .certificate p {
-            font-size: 1.3em;
-            line-height: 1.8;
-            margin: 15px 0;
-        }
-
-        .certificate-name {
-            color: #f5576c;
-            font-weight: bold;
-            font-size: 1.5em;
-        }
-
-        /* Efectos de éxito */
+        /* Animaciones de éxito */
         .success-animation {
             position: fixed;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 10em;
-            z-index: 999;
-            animation: celebrate 1s ease-out;
+            font-size: 5em;
+            animation: successPop 1s forwards;
             pointer-events: none;
+            z-index: 2000;
         }
 
-        @keyframes celebrate {
-            0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
-            50% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+        @keyframes successPop {
+            0% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
+            50% { transform: translate(-50%, -50%) scale(1.5); opacity: 1; }
             100% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
         }
 
@@ -731,6 +921,9 @@
             .padlock-container { gap: 20px; }
             .padlock { min-width: 150px; padding: 20px; }
             .padlock-number { font-size: 2em; letter-spacing: 5px; }
+            .memory-grid { grid-template-columns: repeat(3, 1fr); }
+            .balloon { font-size: 5em; }
+            .hangman-container { flex-direction: column; align-items: center; }
         }
 
         .hidden {
@@ -782,13 +975,13 @@
     <div class="container">
         <!-- Pantalla de inicio -->
         <div id="inicio-screen">
-            <div class="logo-capitulin">🎓</div>
+            <div class="logo-capitulin">🦊</div>
             <h1>El Tesoro Perdido de las Capitulaciones</h1>
             
             <div class="story-box">
                 <p><strong>¡Hola, aventurero!</strong></p>
                 <p>Soy Capitulín, la mascota del CEIP Capitulaciones. He encontrado un mapa antiguo que muestra la ubicación de un tesoro escondido en nuestro cole.</p>
-                <p>Pero hay un problema... el tesoro está protegido por enigmas en 7 salas diferentes. Necesito tu ayuda para resolver todos los acertijos antes de que se acabe el tiempo.</p>
+                <p>Pero hay un problema... el tesoro está protegido por enigmas en <strong>10 salas diferentes</strong>. Necesito tu ayuda para resolver todos los acertijos antes de que se acabe el tiempo.</p>
                 <p><strong>⚠️ ¡Cuidado! Si fallas alguna pregunta, perderás 5 minutos.</strong></p>
                 <p><strong>¿Te atreves a ayudarme? 🗺️💎</strong></p>
             </div>
@@ -822,7 +1015,7 @@
                 <div class="progress-bar">
                     <div class="progress-track">
                         <div class="progress-fill" id="progress" style="width: 0%">
-                            <span id="progress-text">0/7 Salas</span>
+                            <span id="progress-text">0/10 Salas</span>
                         </div>
                     </div>
                 </div>
@@ -834,7 +1027,7 @@
 
             <!-- Botón de Capitulín -->
             <div class="capitulin-helper" onclick="showCapitulinHelp()" title="¿Necesitas ayuda?">
-                🎓
+                🦊
             </div>
         </div>
 
@@ -849,7 +1042,7 @@
                 <p><strong>El Tesoro Perdido de las Capitulaciones</strong></p>
                 <p>Tiempo: <span id="final-time">--:--</span></p>
                 <p>Pistas usadas: <span id="final-hints">0</span></p>
-                <p style="margin-top: 30px; font-size: 3em;">🎓</p>
+                <p style="margin-top: 30px; font-size: 3em;">🦊</p>
                 <p><em>Capitulín - CEIP Capitulaciones</em></p>
                 <button class="btn btn-primary" onclick="location.reload()">🔄 Jugar de Nuevo</button>
             </div>
@@ -859,7 +1052,7 @@
     <!-- Modal de pista -->
     <div id="hint-modal" class="modal">
         <div class="modal-content">
-            <div class="modal-capitulin">🎓</div>
+            <div class="modal-capitulin">🦊</div>
             <h2>Pista de Capitulín</h2>
             <p id="hint-text"></p>
             <button class="close-modal" onclick="closeHintModal()">Entendido</button>
@@ -887,216 +1080,296 @@
             codes: [],
             timerInterval: null,
             roomsCompleted: 0,
-            totalRooms: 7
+            totalRooms: 10
         };
 
-        // Colección de preguntas de familia (mucha variedad)
+        // ==================== BANCO DE PALABRAS AHORCADO ====================
+        const hangmanWords = {
+            1: [ // Nivel 1 - Palabras cortas y fáciles
+                { word: "SOL", category: "Naturaleza" },
+                { word: "MAR", category: "Naturaleza" },
+                { word: "PEZ", category: "Animales" },
+                { word: "OSO", category: "Animales" },
+                { word: "LUNA", category: "Naturaleza" },
+                { word: "CASA", category: "Objetos" },
+                { word: "MESA", category: "Objetos" },
+                { word: "GATO", category: "Animales" },
+                { word: "PERRO", category: "Animales" },
+                { word: "LIBRO", category: "Escuela" },
+                { word: "LAPIZ", category: "Escuela" },
+                { word: "AGUA", category: "Naturaleza" },
+                { word: "FLOR", category: "Naturaleza" },
+                { word: "ARBOL", category: "Naturaleza" },
+                { word: "ROJO", category: "Colores" },
+                { word: "AZUL", category: "Colores" },
+                { word: "VERDE", category: "Colores" },
+                { word: "NUBE", category: "Naturaleza" },
+                { word: "MANO", category: "Cuerpo" },
+                { word: "PIE", category: "Cuerpo" },
+                { word: "BOCA", category: "Cuerpo" },
+                { word: "NARIZ", category: "Cuerpo" },
+                { word: "SILLA", category: "Objetos" },
+                { word: "PUERTA", category: "Objetos" },
+                { word: "COCHE", category: "Vehículos" },
+                { word: "TREN", category: "Vehículos" },
+                { word: "AVION", category: "Vehículos" },
+                { word: "LEON", category: "Animales" },
+                { word: "MONO", category: "Animales" },
+                { word: "RANA", category: "Animales" }
+            ],
+            2: [ // Nivel 2 - Palabras intermedias
+                { word: "ESCUELA", category: "Lugares" },
+                { word: "MARIPOSA", category: "Animales" },
+                { word: "ELEFANTE", category: "Animales" },
+                { word: "COCODRILO", category: "Animales" },
+                { word: "BIBLIOTECA", category: "Lugares" },
+                { word: "ORDENADOR", category: "Tecnología" },
+                { word: "CUADERNO", category: "Escuela" },
+                { word: "PIZARRA", category: "Escuela" },
+                { word: "RECREO", category: "Escuela" },
+                { word: "FAMILIA", category: "Personas" },
+                { word: "AMIGOS", category: "Personas" },
+                { word: "COLEGIO", category: "Lugares" },
+                { word: "PLANETA", category: "Ciencia" },
+                { word: "ESTRELLA", category: "Naturaleza" },
+                { word: "MONTAÑA", category: "Naturaleza" },
+                { word: "CASCADA", category: "Naturaleza" },
+                { word: "OCEANO", category: "Naturaleza" },
+                { word: "DINOSAURIO", category: "Animales" },
+                { word: "JIRAFA", category: "Animales" },
+                { word: "PINGÜINO", category: "Animales" },
+                { word: "TORTUGA", category: "Animales" },
+                { word: "TELEFONO", category: "Tecnología" },
+                { word: "GUITARRA", category: "Música" },
+                { word: "PINTURA", category: "Arte" },
+                { word: "DEPORTES", category: "Actividades" },
+                { word: "BICICLETA", category: "Vehículos" },
+                { word: "HOSPITAL", category: "Lugares" },
+                { word: "MERCADO", category: "Lugares" },
+                { word: "CHOCOLATE", category: "Comida" },
+                { word: "HELADO", category: "Comida" }
+            ],
+            3: [ // Nivel 3 - Palabras difíciles
+                { word: "CAPITULACIONES", category: "Historia" },
+                { word: "DESCUBRIMIENTO", category: "Historia" },
+                { word: "CRISTOBAL", category: "Historia" },
+                { word: "MEDITERRANEO", category: "Geografía" },
+                { word: "ANDALUCIA", category: "Geografía" },
+                { word: "EXTRATERRESTRE", category: "Ciencia ficción" },
+                { word: "MULTIPLICACION", category: "Matemáticas" },
+                { word: "RECTANGULO", category: "Geometría" },
+                { word: "CIRCUNFERENCIA", category: "Geometría" },
+                { word: "FOTOSINTESIS", category: "Ciencia" },
+                { word: "ECOSISTEMA", category: "Ciencia" },
+                { word: "VERTEBRADO", category: "Ciencia" },
+                { word: "INVERTEBRADO", category: "Ciencia" },
+                { word: "DEMOCRACIA", category: "Sociedad" },
+                { word: "CONSTITUCIÓN", category: "Sociedad" },
+                { word: "RENACIMIENTO", category: "Historia" },
+                { word: "ARQUITECTURA", category: "Arte" },
+                { word: "ESCULTURA", category: "Arte" },
+                { word: "INSTRUMENTO", category: "Música" },
+                { word: "ORQUESTA", category: "Música" },
+                { word: "ELECTRICIDAD", category: "Ciencia" },
+                { word: "MAGNETISMO", category: "Ciencia" },
+                { word: "EVAPORACION", category: "Ciencia" },
+                { word: "CONDENSACION", category: "Ciencia" },
+                { word: "PRECIPITACION", category: "Ciencia" },
+                { word: "TEMPERATURA", category: "Ciencia" },
+                { word: "CIVILIZACION", category: "Historia" },
+                { word: "PREHISTORIA", category: "Historia" },
+                { word: "CONTINENTE", category: "Geografía" },
+                { word: "ATMOSFERA", category: "Ciencia" }
+            ]
+        };
+
+        // ==================== PUZZLES DE BALANZA ====================
+        const balancePuzzles = {
+            1: [ // Nivel 1
+                {
+                    equations: [
+                        { left: "🍎 + 🍎", right: "4" },
+                        { left: "🍊 + 🍊 + 🍊", right: "6" }
+                    ],
+                    question: "¿Cuánto vale 🍎 + 🍊?",
+                    options: [3, 4, 5, 6],
+                    answer: 4 // 🍎=2, 🍊=2, 2+2=4
+                },
+                {
+                    equations: [
+                        { left: "⭐ + ⭐ + ⭐", right: "9" },
+                        { left: "🌙", right: "5" }
+                    ],
+                    question: "¿Cuánto vale ⭐ + 🌙?",
+                    options: [6, 7, 8, 9],
+                    answer: 8 // ⭐=3, 🌙=5, 3+5=8
+                },
+                {
+                    equations: [
+                        { left: "🐱 + 🐱", right: "6" },
+                        { left: "🐶", right: "4" }
+                    ],
+                    question: "¿Cuánto vale 🐱 + 🐶?",
+                    options: [5, 6, 7, 8],
+                    answer: 7 // 🐱=3, 🐶=4, 3+4=7
+                }
+            ],
+            2: [ // Nivel 2
+                {
+                    equations: [
+                        { left: "🍕 + 🍕 + 🍔", right: "11" },
+                        { left: "🍔 + 🍔", right: "6" }
+                    ],
+                    question: "¿Cuánto vale 🍕?",
+                    options: [3, 4, 5, 6],
+                    answer: 4 // 🍔=3, 🍕+🍕+3=11, 🍕=4
+                },
+                {
+                    equations: [
+                        { left: "🎈 + 🎈 + 🎈", right: "15" },
+                        { left: "🎈 + 🎁", right: "9" }
+                    ],
+                    question: "¿Cuánto vale 🎁?",
+                    options: [2, 3, 4, 5],
+                    answer: 4 // 🎈=5, 5+🎁=9, 🎁=4
+                },
+                {
+                    equations: [
+                        { left: "🚗 + 🚗", right: "14" },
+                        { left: "🚗 + 🚌", right: "17" }
+                    ],
+                    question: "¿Cuánto vale 🚌?",
+                    options: [8, 9, 10, 11],
+                    answer: 10 // 🚗=7, 7+🚌=17, 🚌=10
+                }
+            ],
+            3: [ // Nivel 3
+                {
+                    equations: [
+                        { left: "🔷 + 🔷 + 🔶", right: "17" },
+                        { left: "🔶 + 🔶", right: "14" },
+                        { left: "🔷 + 🔶 + ⬟", right: "15" }
+                    ],
+                    question: "¿Cuánto vale ⬟?",
+                    options: [3, 4, 5, 6],
+                    answer: 5 // 🔶=7, 🔷+🔷+7=17→🔷=5, 5+7+⬟=15→⬟=3... wait let me recalculate
+                    // 🔶=7, 🔷+🔷=10→🔷=5, 5+7+⬟=15→⬟=3
+                    // Actually answer should be 3
+                },
+                {
+                    equations: [
+                        { left: "🌺 + 🌺 + 🌺", right: "24" },
+                        { left: "🌺 + 🌻 + 🌻", right: "22" },
+                        { left: "🌻 + 🌼", right: "12" }
+                    ],
+                    question: "¿Cuánto vale 🌼?",
+                    options: [5, 6, 7, 8],
+                    answer: 7 // 🌺=8, 8+🌻+🌻=22→🌻=7, 7+🌼=12→🌼=5... wait
+                    // 🌺=8, 🌻+🌻=14→🌻=7, 🌼=5... answer should be 5
+                },
+                {
+                    equations: [
+                        { left: "📚 + 📚 + 📚", right: "18" },
+                        { left: "📚 + ✏️", right: "10" },
+                        { left: "✏️ + ✏️ + 📐", right: "13" }
+                    ],
+                    question: "¿Cuánto vale 📐?",
+                    options: [3, 4, 5, 6],
+                    answer: 5 // 📚=6, ✏️=4, 4+4+📐=13→📐=5
+                }
+            ]
+        };
+        // Fix balance puzzles level 3
+        balancePuzzles[3][0].answer = 3;
+        balancePuzzles[3][1].answer = 5;
+
+        // ==================== PREGUNTAS DE FAMILIA ====================
         const familyQuestionsPool = [
             // Nivel 1 - Fáciles
-            {
-                level: 1,
-                question: "Si tu mamá tiene una hermana, ¿qué es ella para ti?",
-                options: ["Mi tía", "Mi prima", "Mi abuela", "Mi hermana"],
-                correct: 0
-            },
-            {
-                level: 1,
-                question: "El papá de tu mamá es tu...",
-                options: ["Tío", "Abuelo", "Primo", "Hermano"],
-                correct: 1
-            },
-            {
-                level: 1,
-                question: "La hija de tus padres que no eres tú es tu...",
-                options: ["Prima", "Tía", "Hermana", "Abuela"],
-                correct: 2
-            },
-            {
-                level: 1,
-                question: "El hijo de tu tía es tu...",
-                options: ["Hermano", "Primo", "Sobrino", "Tío"],
-                correct: 1
-            },
-            {
-                level: 1,
-                question: "La mamá de tu papá es tu...",
-                options: ["Tía", "Madrina", "Abuela", "Prima"],
-                correct: 2
-            },
-            {
-                level: 1,
-                question: "Si tienes un hermano, para él tú eres su...",
-                options: ["Primo/a", "Hermano/a", "Tío/a", "Sobrino/a"],
-                correct: 1
-            },
+            { level: 1, question: "Si tu mamá tiene una hermana, ¿qué es ella para ti?", options: ["Mi tía", "Mi prima", "Mi abuela", "Mi hermana"], correct: 0 },
+            { level: 1, question: "El papá de tu mamá es tu...", options: ["Tío", "Primo", "Abuelo", "Hermano"], correct: 2 },
+            { level: 1, question: "La hija de tus padres es tu...", options: ["Prima", "Tía", "Hermana", "Sobrina"], correct: 2 },
+            { level: 1, question: "El hijo de tu tía es tu...", options: ["Hermano", "Primo", "Sobrino", "Tío"], correct: 1 },
+            { level: 1, question: "La mamá de tu papá es tu...", options: ["Tía", "Abuela", "Hermana", "Prima"], correct: 1 },
+            { level: 1, question: "El hermano de tu papá es tu...", options: ["Abuelo", "Primo", "Tío", "Sobrino"], correct: 2 },
+            { level: 1, question: "Los padres de tus padres son tus...", options: ["Tíos", "Primos", "Hermanos", "Abuelos"], correct: 3 },
+            { level: 1, question: "La hermana de tu mamá es tu...", options: ["Abuela", "Tía", "Prima", "Sobrina"], correct: 1 },
             // Nivel 2 - Intermedias
-            {
-                level: 2,
-                question: "El hijo de mi hermana es para mí...",
-                options: ["Mi primo", "Mi sobrino", "Mi nieto", "Mi cuñado"],
-                correct: 1
-            },
-            {
-                level: 2,
-                question: "¿Quién es para mí el hijo de mi suegra?",
-                options: ["Mi primo", "Mi cuñado o mi esposo/a", "Mi tío", "Mi sobrino"],
-                correct: 1
-            },
-            {
-                level: 2,
-                question: "El padre de mi prima es mi...",
-                options: ["Abuelo", "Tío", "Primo", "Cuñado"],
-                correct: 1
-            },
-            {
-                level: 2,
-                question: "Si mi tío tiene una hija, ella es mi...",
-                options: ["Sobrina", "Prima", "Hermana", "Tía"],
-                correct: 1
-            },
-            {
-                level: 2,
-                question: "El hermano de mi padre es mi...",
-                options: ["Abuelo", "Primo", "Tío", "Sobrino"],
-                correct: 2
-            },
-            {
-                level: 2,
-                question: "Los padres de mi esposa/esposo son mis...",
-                options: ["Tíos", "Abuelos", "Suegros", "Cuñados"],
-                correct: 2
-            },
-            {
-                level: 2,
-                question: "El hijo de mi hijo es mi...",
-                options: ["Sobrino", "Bisnieto", "Nieto", "Primo"],
-                correct: 2
-            },
-            {
-                level: 2,
-                question: "La esposa de mi hermano es mi...",
-                options: ["Prima", "Tía", "Cuñada", "Suegra"],
-                correct: 2
-            },
+            { level: 2, question: "El hijo de tu hermano es tu...", options: ["Primo", "Sobrino", "Nieto", "Tío"], correct: 1 },
+            { level: 2, question: "La madre de tu primo es tu...", options: ["Abuela", "Tía", "Prima", "Hermana"], correct: 1 },
+            { level: 2, question: "El padre de tu tío es tu...", options: ["Bisabuelo", "Abuelo", "Tío abuelo", "Primo"], correct: 1 },
+            { level: 2, question: "La hija de tu abuela es tu...", options: ["Hermana", "Prima", "Madre o tía", "Sobrina"], correct: 2 },
+            { level: 2, question: "El hermano de tu abuelo es tu...", options: ["Tío", "Tío abuelo", "Primo", "Bisabuelo"], correct: 1 },
+            { level: 2, question: "Los hijos de tus tíos son tus...", options: ["Hermanos", "Sobrinos", "Primos", "Nietos"], correct: 2 },
+            { level: 2, question: "El padre del padre de tu padre es tu...", options: ["Abuelo", "Bisabuelo", "Tío abuelo", "Tatarabuelo"], correct: 1 },
+            { level: 2, question: "La hija de tu hermana es tu...", options: ["Prima", "Nieta", "Sobrina", "Tía"], correct: 2 },
             // Nivel 3 - Difíciles
-            {
-                level: 3,
-                question: "¿Quién es para mí la madre del marido de mi hermana?",
-                options: ["Mi suegra", "Mi consuegra", "Mi tía política", "Ningún parentesco directo"],
-                correct: 3
-            },
-            {
-                level: 3,
-                question: "El abuelo de mi padre es mi...",
-                options: ["Tatarabuelo", "Bisabuelo", "Abuelo segundo", "Tío abuelo"],
-                correct: 1
-            },
-            {
-                level: 3,
-                question: "Si el hermano de mi madre se casa, su esposa es mi...",
-                options: ["Tía", "Tía política", "Prima", "Madrastra"],
-                correct: 1
-            },
-            {
-                level: 3,
-                question: "El hijo de mi bisabuelo que no es mi abuelo es mi...",
-                options: ["Tío abuelo", "Primo segundo", "Bisabuelo", "Tío"],
-                correct: 0
-            },
-            {
-                level: 3,
-                question: "¿Quién soy yo para el hijo de la hermana de mi madre?",
-                options: ["Su tío/a", "Su primo/a", "Su sobrino/a", "Su hermano/a"],
-                correct: 1
-            },
-            {
-                level: 3,
-                question: "La nuera de mi madre es...",
-                options: ["La esposa de mi hermano", "Mi cuñada", "Mi prima", "Las dos primeras son correctas"],
-                correct: 3
-            },
-            {
-                level: 3,
-                question: "Si mi prima tiene un hijo, ¿qué parentesco tengo con él?",
-                options: ["Es mi sobrino", "Es mi sobrino segundo", "Es mi primo segundo", "No hay parentesco"],
-                correct: 1
-            },
-            {
-                level: 3,
-                question: "El yerno de mis padres es...",
-                options: ["Mi cuñado", "El esposo de mi hermana", "Mi primo", "Mi suegro"],
-                correct: 1
-            },
-            {
-                level: 3,
-                question: "¿Quién es para mí el padre de mi cuñado?",
-                options: ["Mi suegro", "Mi consuegro", "No hay parentesco directo", "Mi tío político"],
-                correct: 2
-            },
-            {
-                level: 3,
-                question: "Los hijos de mis tíos abuelos son mis...",
-                options: ["Primos", "Tíos segundos", "Primos segundos", "Sobrinos"],
-                correct: 1
-            }
+            { level: 3, question: "¿Quién es para ti el hijo de la hermana de tu madre?", options: ["Tu hermano", "Tu primo", "Tu sobrino", "Tu tío"], correct: 1 },
+            { level: 3, question: "¿Qué parentesco tiene contigo el abuelo de tu primo?", options: ["Tu bisabuelo", "Tu abuelo", "Tu tío abuelo", "Ninguno directo"], correct: 1 },
+            { level: 3, question: "Si tu tía tiene un hijo, ¿qué es el hijo de ese hijo para ti?", options: ["Primo segundo", "Sobrino", "Primo", "Sobrino nieto"], correct: 0 },
+            { level: 3, question: "¿Quién es para ti la madre del marido de tu hermana?", options: ["Tu suegra", "Tu tía", "Tu consuegra", "Ningún parentesco"], correct: 3 },
+            { level: 3, question: "El hijo de tu bisabuelo que no es tu abuelo es tu...", options: ["Tío", "Tío abuelo", "Primo", "Bisabuelo"], correct: 1 },
+            { level: 3, question: "¿Qué son entre sí los hijos de dos hermanos?", options: ["Hermanos", "Primos hermanos", "Primos segundos", "Sobrinos"], correct: 1 },
+            { level: 3, question: "La nuera de tu abuela puede ser tu...", options: ["Tía", "Madre", "Madre o tía", "Prima"], correct: 2 },
+            { level: 3, question: "¿Qué parentesco tienes con el padre del esposo de tu tía?", options: ["Abuelo", "Tío", "Ningún parentesco", "Consuegro"], correct: 2 }
         ];
 
-        // Puzzles de candados por nivel
+        // ==================== PUZZLES DE CANDADOS ====================
         const padlockPuzzles = {
             1: {
-                clue1: { number: "135", hint: "Un número es correcto y está bien colocado" },
-                clue2: { number: "247", hint: "Un número es correcto pero está mal colocado" },
-                clue3: { number: "389", hint: "Ningún número es correcto" },
-                answer: "175"
+                clue1: { number: "123", hint: "Un número correcto y bien colocado" },
+                clue2: { number: "456", hint: "Nada correcto" },
+                clue3: { number: "178", hint: "Dos números correctos pero mal colocados" },
+                answer: "817"
             },
             2: {
-                clue1: { number: "291", hint: "Un número es correcto pero está mal colocado" },
-                clue2: { number: "245", hint: "Un número es correcto pero está mal colocado" },
-                clue3: { number: "463", hint: "Dos números son correctos pero están mal colocados" },
+                clue1: { number: "291", hint: "Un número correcto pero mal colocado" },
+                clue2: { number: "245", hint: "Un número correcto pero mal colocado" },
+                clue3: { number: "463", hint: "Dos números correctos pero mal colocados" },
                 answer: "642"
             },
             3: {
-                clue1: { number: "682", hint: "Un número es correcto y está bien colocado" },
-                clue2: { number: "614", hint: "Un número es correcto pero está mal colocado" },
-                clue3: { number: "206", hint: "Dos números son correctos pero están mal colocados" },
-                answer: "062"
+                clue1: { number: "147", hint: "Un número correcto y bien colocado" },
+                clue2: { number: "189", hint: "Un número correcto pero mal colocado" },
+                clue3: { number: "964", hint: "Dos números correctos, uno bien colocado" },
+                answer: "941"
             }
         };
 
-        // Contenido por niveles
+        // ==================== CONTENIDO POR NIVEL ====================
         const levelContent = {
             1: { // 1º-2º Primaria
                 biblioteca: {
                     fragments: [
-                        "Había una vez",
-                        "un pequeño dragón",
-                        "que vivía en el cole",
-                        "y le gustaba leer",
-                        "muchos cuentos divertidos"
+                        "Nuestro colegio",
+                        "se llama CEIP Capitulaciones",
+                        "y está en",
+                        "Santa Fe, Granada"
                     ],
-                    palabra: "LEER"
+                    palabra: "CEIP"
                 },
                 laboratorio: [
-                    { problem: "5 + 3", answer: 8 },
-                    { problem: "10 - 4", answer: 6 },
+                    { problem: "3 + 4", answer: 7 },
+                    { problem: "8 - 3", answer: 5 },
                     { problem: "2 × 3", answer: 6 },
-                    { problem: "8 ÷ 2", answer: 4 }
+                    { problem: "10 ÷ 2", answer: 5 }
                 ],
                 gimnasio: {
-                    sequence: ["🔴", "🔵", "🔴", "🔵", "❓"],
-                    answer: "🔴"
+                    sequence: ["🔴", "🔵", "🔴", "🔵", "🔴", "❓"],
+                    answer: "🔵"
                 },
                 ciencias: [
-                    { question: "¿Qué necesitan las plantas?", answers: ["Agua", "Luz", "Piedras"], correct: [0, 1] },
-                    { question: "Animal que vuela:", answers: ["Pájaro", "Perro", "Pez"], correct: [0] }
-                ]
+                    { question: "¿Cuántas patas tiene un perro?", answers: ["2", "4", "6"], correct: [1] },
+                    { question: "¿De qué color es el sol?", answers: ["Azul", "Verde", "Amarillo"], correct: [2] }
+                ],
+                memory: ["🍎", "🍊", "🍋", "🍇", "🍓", "🍌"]
             },
             2: { // 3º-4º Primaria
                 biblioteca: {
                     fragments: [
-                        "En el año 1492",
-                        "Cristóbal Colón",
-                        "firmó las Capitulaciones",
+                        "Los Reyes Católicos",
+                        "firmaron las Capitulaciones",
+                        "con Cristóbal Colón",
                         "en Santa Fe, Granada",
                         "para descubrir nuevas tierras"
                     ],
@@ -1115,7 +1388,8 @@
                 ciencias: [
                     { question: "Estados del agua:", answers: ["Sólido", "Líquido", "Gaseoso"], correct: [0, 1, 2] },
                     { question: "Planeta más cercano al Sol:", answers: ["Mercurio", "Venus", "Tierra"], correct: [0] }
-                ]
+                ],
+                memory: ["🦁", "🐘", "🦒", "🐬", "🦋", "🐢"]
             },
             3: { // 5º-6º Primaria
                 biblioteca: {
@@ -1141,40 +1415,52 @@
                 ciencias: [
                     { question: "Tipos de energía:", answers: ["Solar", "Eólica", "Nuclear"], correct: [0, 1, 2] },
                     { question: "Órgano que bombea sangre:", answers: ["Corazón", "Pulmón", "Hígado"], correct: [0] }
-                ]
+                ],
+                memory: ["🔬", "🧬", "⚗️", "🔭", "🧲", "💡"]
             }
         };
 
+        // ==================== PISTAS ====================
         const hints = [
-            [
-                "Lee cada fragmento con cuidado y piensa en el orden lógico de la historia.",
-                "¿Cuáles son las operaciones matemáticas básicas que conoces?",
+            [ // Nivel 1
+                "Lee cada fragmento con cuidado y piensa en el orden lógico.",
                 "Observa el patrón: ¿qué elemento se repite?",
+                "Recuerda dónde has visto cada carta.",
+                "¿Cuáles son las operaciones matemáticas básicas?",
+                "Piensa en las letras que más se usan en español.",
+                "Si dos cosas pesan igual, ¡valen lo mismo!",
                 "Lee cada pregunta dos veces antes de responder.",
                 "Piensa en las pistas: ¿qué números NO pueden ser?",
-                "Dibuja tu árbol familiar para entender mejor las relaciones.",
-                "Usa los números que has encontrado en orden."
+                "Dibuja tu árbol familiar para entender mejor.",
+                "Usa los números que encontraste en orden."
             ],
-            [
-                "Los fragmentos cuentan algo importante sobre nuestro cole. ¿En qué orden tienen sentido?",
-                "Recuerda las tablas de multiplicar que has aprendido.",
-                "Mira la secuencia completa: ¿cuál es el patrón que se repite?",
-                "Algunas preguntas pueden tener más de una respuesta correcta.",
-                "Elimina los números que seguro NO están. Ve pista por pista.",
+            [ // Nivel 2
+                "Los fragmentos cuentan algo importante sobre nuestro cole.",
+                "Mira la secuencia completa: ¿cuál es el patrón?",
+                "Intenta recordar las posiciones de las parejas.",
+                "Recuerda las tablas de multiplicar.",
+                "Las vocales aparecen mucho en las palabras.",
+                "Resuelve primero las ecuaciones más sencillas.",
+                "Algunas preguntas pueden tener varias respuestas.",
+                "Elimina los números que seguro NO están.",
                 "Tu suegra es la madre de tu esposo/a.",
-                "Revisa todos los códigos que has encontrado en orden."
+                "Revisa todos los códigos en orden."
             ],
-            [
-                "Este texto habla de un momento histórico muy importante. ¿Puedes ordenarlo cronológicamente?",
-                "Usa la multiplicación y división para verificar tus respuestas.",
-                "Esta secuencia sigue una regla matemática. ¿Puedes descubrirla?",
-                "Piensa en lo que has aprendido en Ciencias Naturales y Sociales.",
-                "Usa lógica: si un número está mal colocado, prueba en otra posición.",
+            [ // Nivel 3
+                "Este texto habla de un momento histórico muy importante.",
+                "Esta secuencia sigue una regla matemática. ¿Cuál?",
+                "Concéntrate y memoriza las posiciones.",
+                "Usa multiplicación y división para verificar.",
+                "Piensa en consonantes poco comunes: Q, X, Z...",
+                "Sustituye los valores conocidos en las ecuaciones.",
+                "Piensa en lo que has aprendido en Ciencias.",
+                "Usa lógica: si está mal colocado, prueba otra posición.",
                 "Piensa paso a paso: primero identifica quién es quién.",
-                "Introduce los siete dígitos que obtuviste de cada sala."
+                "Introduce los nueve dígitos que obtuviste."
             ]
         ];
 
+        // ==================== FUNCIONES PRINCIPALES ====================
         function selectLevel(level) {
             gameState.level = level;
             document.querySelectorAll('.level-btn').forEach(btn => {
@@ -1214,17 +1500,16 @@
             document.getElementById('timer').textContent = 
                 `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
             
-            if (gameState.timeRemaining <= 300) { // 5 minutos
+            if (gameState.timeRemaining <= 300) {
                 document.getElementById('timer').style.color = '#e74c3c';
             }
         }
 
         function applyPenalty() {
-            gameState.timeRemaining -= 300; // 5 minutos de penalización
+            gameState.timeRemaining -= 300; // 5 minutos
             if (gameState.timeRemaining < 0) gameState.timeRemaining = 0;
             updateTimer();
             
-            // Efecto visual
             const timer = document.getElementById('timer');
             timer.classList.add('penalty-text');
             setTimeout(() => timer.classList.remove('penalty-text'), 500);
@@ -1247,22 +1532,29 @@
             gameState.currentRoom = roomIndex;
 
             const rooms = [
-                createBibliotecaRoom,
-                createLaboratorioRoom,
-                createGimnasioRoom,
-                createCienciasRoom,
-                createCandadosRoom,
-                createFamiliaRoom,
-                createTesoroRoom
+                createBibliotecaRoom,      // 0 - Biblioteca
+                createGimnasioRoom,        // 1 - Gimnasio (secuencias)
+                createMemoriaRoom,         // 2 - Memoria (NUEVA)
+                createLaboratorioRoom,     // 3 - Laboratorio
+                createAhorcadoRoom,        // 4 - Ahorcado (NUEVA)
+                createBalanzaRoom,         // 5 - Balanza (NUEVA)
+                createCienciasRoom,        // 6 - Ciencias
+                createCandadosRoom,        // 7 - Candados
+                createFamiliaRoom,         // 8 - Familia
+                createTesoroRoom           // 9 - Tesoro
             ];
 
             container.innerHTML = '';
             rooms[roomIndex]();
         }
 
+        // ==================== SALA 1: BIBLIOTECA ====================
         function createBibliotecaRoom() {
             const content = levelContent[gameState.level].biblioteca;
             const container = document.getElementById('room-container');
+            
+            // Mezclar fragmentos
+            const shuffledFragments = [...content.fragments].sort(() => Math.random() - 0.5);
             
             container.innerHTML = `
                 <div class="room">
@@ -1270,40 +1562,16 @@
                     <p class="room-subtitle">Ordena los fragmentos para descubrir la historia</p>
                     
                     <div class="puzzle-container">
-                        <div class="books-shelf">
-                            <div class="book book-red" onclick="showFragment(0)">
-                                <span>Libro 1</span>
-                            </div>
-                            <div class="book book-blue" onclick="showFragment(1)">
-                                <span>Libro 2</span>
-                            </div>
-                            <div class="book book-green" onclick="showFragment(2)">
-                                <span>Libro 3</span>
-                            </div>
-                            <div class="book book-purple" onclick="showFragment(3)">
-                                <span>Libro 4</span>
-                            </div>
-                            <div class="book book-orange" onclick="showFragment(4)">
-                                <span>Libro 5</span>
-                            </div>
+                        <div id="fragments-source" style="margin: 20px 0;">
+                            ${shuffledFragments.map((frag, i) => 
+                                `<div class="text-fragment" draggable="true" data-text="${frag}" 
+                                     ondragstart="drag(event)" id="frag-${i}">${frag}</div>`
+                            ).join('')}
                         </div>
 
-                        <div style="margin-top: 40px;">
-                            <h3>Ordena la historia arrastrando los fragmentos:</h3>
-                            <div id="fragments-source" style="margin: 20px 0;">
-                                ${content.fragments.map((frag, i) => 
-                                    `<div class="text-fragment" draggable="true" data-index="${i}" 
-                                         ondragstart="drag(event)">${frag}</div>`
-                                ).join('')}
-                            </div>
-
-                            <h3>Historia ordenada:</h3>
-                            ${[0,1,2,3,4].map(i => 
-                                `<div class="drop-zone" data-position="${i}" 
-                                     ondrop="drop(event)" ondragover="allowDrop(event)">
-                                     Posición ${i + 1}
-                                 </div>`
-                            ).join('')}
+                        <h3>Historia ordenada:</h3>
+                        <div class="drop-zone" id="drop-zone" ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <p style="color: #999; text-align: center;">Arrastra los fragmentos aquí en orden correcto</p>
                         </div>
 
                         <div id="biblioteca-feedback"></div>
@@ -1311,182 +1579,175 @@
 
                     <div class="action-buttons">
                         <button class="btn btn-hint" onclick="showHint(0)">💡 Pedir Pista</button>
-                        <button class="btn btn-success" onclick="checkBiblioteca()">✓ Comprobar</button>
+                        <button class="btn btn-success" onclick="checkBiblioteca()">✓ Comprobar Orden</button>
                     </div>
                 </div>
             `;
         }
 
-        let draggedElement = null;
-        let droppedFragments = {};
-
-        function showFragment(index) {
-            const content = levelContent[gameState.level].biblioteca;
-            showTemporaryMessage(content.fragments[index]);
+        function allowDrop(ev) {
+            ev.preventDefault();
+            ev.target.classList.add('drag-over');
         }
 
-        function drag(event) {
-            draggedElement = event.target;
-            event.dataTransfer.effectAllowed = 'move';
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+            ev.target.classList.add('dragging');
         }
 
-        function allowDrop(event) {
-            event.preventDefault();
-            event.target.classList.add('drag-over');
-        }
-
-        function drop(event) {
-            event.preventDefault();
-            event.target.classList.remove('drag-over');
+        function drop(ev) {
+            ev.preventDefault();
+            ev.target.classList.remove('drag-over');
+            const data = ev.dataTransfer.getData("text");
+            const element = document.getElementById(data);
+            element.classList.remove('dragging');
             
-            if (draggedElement && event.target.classList.contains('drop-zone')) {
-                const position = event.target.dataset.position;
-                const fragmentIndex = draggedElement.dataset.index;
-                
-                event.target.innerHTML = draggedElement.textContent;
-                event.target.classList.add('filled');
-                
-                droppedFragments[position] = fragmentIndex;
-                draggedElement.classList.add('placed');
-                draggedElement.draggable = false;
-            }
+            const dropZone = document.getElementById('drop-zone');
+            const placeholder = dropZone.querySelector('p');
+            if (placeholder) placeholder.remove();
+            
+            dropZone.appendChild(element);
         }
 
         function checkBiblioteca() {
-            if (Object.keys(droppedFragments).length !== 5) {
-                showFeedback('biblioteca-feedback', '¡Completa todas las posiciones!', false);
+            const content = levelContent[gameState.level].biblioteca;
+            const dropZone = document.getElementById('drop-zone');
+            const fragments = dropZone.querySelectorAll('.text-fragment');
+            
+            if (fragments.length !== content.fragments.length) {
+                showFeedback('biblioteca-feedback', 'Arrastra todos los fragmentos a la zona de orden', false);
                 return;
             }
 
             let correct = true;
-            for (let i = 0; i < 5; i++) {
-                if (droppedFragments[i] != i) {
+            fragments.forEach((frag, i) => {
+                if (frag.dataset.text !== content.fragments[i]) {
                     correct = false;
-                    break;
                 }
-            }
+            });
 
             if (correct) {
-                const code = Math.floor(Math.random() * 9) + 1;
-                gameState.codes.push(code);
-                completeRoom(code, "¡Excelente! Has ordenado la historia correctamente.");
+                showFeedback('biblioteca-feedback', '¡Correcto! Has ordenado la historia perfectamente.', true);
+                setTimeout(() => {
+                    const code = Math.floor(Math.random() * 9) + 1;
+                    gameState.codes.push(code);
+                    completeRoom(code, "¡Excelente trabajo ordenando la historia!");
+                }, 1000);
             } else {
                 applyPenalty();
-                showFeedback('biblioteca-feedback', '❌ El orden no es correcto. -5 minutos. Inténtalo de nuevo.', false);
-                document.querySelectorAll('.drop-zone').forEach(zone => {
-                    zone.innerHTML = 'Posición ' + (parseInt(zone.dataset.position) + 1);
-                    zone.classList.remove('filled');
-                });
-                document.querySelectorAll('.text-fragment').forEach(frag => {
-                    frag.classList.remove('placed');
-                    frag.draggable = true;
-                });
-                droppedFragments = {};
+                showFeedback('biblioteca-feedback', '❌ El orden no es correcto. -5 minutos. Piensa en la secuencia lógica.', false);
             }
         }
 
-        function createLaboratorioRoom() {
-            const content = levelContent[gameState.level].laboratorio;
-            const container = document.getElementById('room-container');
-            
-            container.innerHTML = `
-                <div class="room">
-                    <h2 class="room-title">🔬 El Laboratorio de Números</h2>
-                    <p class="room-subtitle">Resuelve los problemas matemáticos</p>
-                    
-                    <div class="puzzle-container">
-                        <div class="lab-table">
-                            ${content.map((prob, i) => `
-                                <div class="math-card">
-                                    <div class="math-problem">${prob.problem} = ?</div>
-                                    <input type="number" class="math-input" id="math-${i}" 
-                                           placeholder="Respuesta">
-                                    <button class="check-btn" onclick="checkMathProblem(${i}, ${prob.answer})">
-                                        Comprobar
-                                    </button>
-                                    <div id="math-feedback-${i}"></div>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-
-                    <div class="action-buttons">
-                        <button class="btn btn-hint" onclick="showHint(1)">💡 Pedir Pista</button>
-                    </div>
-                </div>
-            `;
-
-            window.labProblemsTotal = content.length;
-            window.labProblemsSolved = 0;
-        }
-
-        function checkMathProblem(index, correctAnswer) {
-            const input = document.getElementById(`math-${index}`);
-            const userAnswer = parseInt(input.value);
-            const feedback = document.getElementById(`math-feedback-${index}`);
-
-            if (isNaN(userAnswer)) {
-                feedback.innerHTML = '<div style="color: #721c24; margin-top: 10px;">Introduce un número</div>';
-                return;
-            }
-
-            if (userAnswer === correctAnswer) {
-                feedback.innerHTML = '<div style="color: #155724; margin-top: 10px;">✓ ¡Correcto!</div>';
-                input.disabled = true;
-                input.style.background = '#d4edda';
-                window.labProblemsSolved++;
-
-                if (window.labProblemsSolved === window.labProblemsTotal) {
-                    setTimeout(() => {
-                        const code = Math.floor(Math.random() * 9) + 1;
-                        gameState.codes.push(code);
-                        completeRoom(code, "¡Fantástico! Has resuelto todos los problemas matemáticos.");
-                    }, 500);
-                }
-            } else {
-                applyPenalty();
-                feedback.innerHTML = '<div style="color: #721c24; margin-top: 10px;">✗ Incorrecto. -5 minutos</div>';
-                input.value = '';
-            }
-        }
-
+        // ==================== SALA 2: GIMNASIO (Secuencias) ====================
         function createGimnasioRoom() {
             const content = levelContent[gameState.level].gimnasio;
             const container = document.getElementById('room-container');
             
-            const colors = ['#e74c3c', '#3498db', '#2ecc71', '#f39c12', '#9b59b6', '#1abc9c'];
+            // Opciones de respuesta
+            let options;
+            if (gameState.level === 1) {
+                options = ["🔴", "🔵", "🟢", "🟡"];
+            } else if (gameState.level === 2) {
+                options = ["⬛", "⬜", "🟫", "🟦"];
+            } else {
+                options = ["32", "24", "20", "64"];
+            }
             
             container.innerHTML = `
                 <div class="room">
-                    <h2 class="room-title">⚽ El Gimnasio de los Retos</h2>
-                    <p class="room-subtitle">Completa la secuencia</p>
+                    <h2 class="room-title">🏃 El Gimnasio de las Secuencias</h2>
+                    <p class="room-subtitle">Completa el patrón lógico</p>
                     
                     <div class="puzzle-container">
-                        <div class="tangram-container">
-                            <h3 style="text-align: center; margin-bottom: 30px;">
-                                ¿Qué elemento falta en la secuencia?
-                            </h3>
-                            
-                            <div class="pattern-grid">
-                                ${content.sequence.map((item, i) => 
-                                    `<div class="pattern-item" style="background: ${colors[i]}">
-                                        ${item}
-                                    </div>`
-                                ).join('')}
-                            </div>
-
-                            <h3 style="text-align: center; margin: 40px 0 20px;">Selecciona la respuesta:</h3>
-                            <div class="pattern-grid" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));">
-                                ${getPatternOptions(content.sequence[0]).map(option => 
-                                    `<div class="pattern-item" style="background: #ecf0f1; cursor: pointer;" 
-                                          onclick="selectPattern('${option}', '${content.answer}')">
-                                        ${option}
-                                    </div>`
-                                ).join('')}
-                            </div>
-
-                            <div id="gimnasio-feedback"></div>
+                        <div class="pattern-grid">
+                            ${content.sequence.map(item => `
+                                <div class="pattern-item ${item === '❓' ? 'mystery' : ''}">${item}</div>
+                            `).join('')}
                         </div>
+
+                        <h3 style="text-align: center; margin: 20px 0;">¿Qué sigue en la secuencia?</h3>
+                        
+                        <div class="pattern-options">
+                            ${options.map(opt => `
+                                <div class="pattern-option" onclick="selectPattern('${opt}')" data-option="${opt}">${opt}</div>
+                            `).join('')}
+                        </div>
+
+                        <div id="gimnasio-feedback"></div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn btn-hint" onclick="showHint(1)">💡 Pedir Pista</button>
+                        <button class="btn btn-success" onclick="checkGimnasio()">✓ Comprobar</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function selectPattern(option) {
+            document.querySelectorAll('.pattern-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            document.querySelector(`.pattern-option[data-option="${option}"]`).classList.add('selected');
+            window.selectedPattern = option;
+        }
+
+        function checkGimnasio() {
+            const content = levelContent[gameState.level].gimnasio;
+            
+            if (!window.selectedPattern) {
+                showFeedback('gimnasio-feedback', 'Selecciona una opción primero', false);
+                return;
+            }
+
+            if (window.selectedPattern === content.answer) {
+                showFeedback('gimnasio-feedback', '¡Correcto! Has completado la secuencia.', true);
+                setTimeout(() => {
+                    const code = Math.floor(Math.random() * 9) + 1;
+                    gameState.codes.push(code);
+                    completeRoom(code, "¡Muy bien identificando el patrón!");
+                }, 1000);
+            } else {
+                applyPenalty();
+                showFeedback('gimnasio-feedback', '❌ Esa no es la respuesta correcta. -5 minutos.', false);
+            }
+        }
+
+        // ==================== SALA 3: MEMORIA (NUEVA) ====================
+        function createMemoriaRoom() {
+            const content = levelContent[gameState.level].memory;
+            const container = document.getElementById('room-container');
+            
+            // Crear pares y mezclar
+            const cards = [...content, ...content];
+            const shuffledCards = cards.sort(() => Math.random() - 0.5);
+            
+            window.memoryCards = shuffledCards;
+            window.flippedCards = [];
+            window.matchedPairs = 0;
+            window.memoryAttempts = 0;
+            
+            container.innerHTML = `
+                <div class="room">
+                    <h2 class="room-title">🧠 La Sala de la Memoria</h2>
+                    <p class="room-subtitle">Encuentra las 6 parejas de cartas</p>
+                    
+                    <div class="memory-stats">
+                        Parejas encontradas: <span id="pairs-found">0</span>/6 | 
+                        Intentos: <span id="memory-attempts">0</span>
+                    </div>
+                    
+                    <div class="puzzle-container">
+                        <div class="memory-grid">
+                            ${shuffledCards.map((card, i) => `
+                                <div class="memory-card" data-index="${i}" data-symbol="${card}" onclick="flipCard(${i})">
+                                    <span class="memory-card-content">${card}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+
+                        <div id="memoria-feedback"></div>
                     </div>
 
                     <div class="action-buttons">
@@ -1496,27 +1757,333 @@
             `;
         }
 
-        function getPatternOptions(firstElement) {
-            if (firstElement === '🔴') return ['🔴', '🔵', '🟢', '🟡'];
-            if (firstElement === '⬛') return ['⬛', '⬜', '🟨', '🟦'];
-            if (firstElement === '2') return ['32', '24', '16', '64'];
-            return ['A', 'B', 'C', 'D'];
+        function flipCard(index) {
+            const card = document.querySelector(`.memory-card[data-index="${index}"]`);
+            
+            // No voltear si ya está volteada o emparejada
+            if (card.classList.contains('flipped') || card.classList.contains('matched')) return;
+            
+            // No voltear más de 2 cartas
+            if (window.flippedCards.length >= 2) return;
+            
+            card.classList.add('flipped');
+            window.flippedCards.push({ index, symbol: card.dataset.symbol, element: card });
+            
+            if (window.flippedCards.length === 2) {
+                window.memoryAttempts++;
+                document.getElementById('memory-attempts').textContent = window.memoryAttempts;
+                
+                const [card1, card2] = window.flippedCards;
+                
+                if (card1.symbol === card2.symbol) {
+                    // ¡Pareja encontrada!
+                    setTimeout(() => {
+                        card1.element.classList.add('matched');
+                        card2.element.classList.add('matched');
+                        window.matchedPairs++;
+                        document.getElementById('pairs-found').textContent = window.matchedPairs;
+                        window.flippedCards = [];
+                        
+                        if (window.matchedPairs === 6) {
+                            showFeedback('memoria-feedback', '¡Excelente memoria! Has encontrado todas las parejas.', true);
+                            setTimeout(() => {
+                                const code = Math.floor(Math.random() * 9) + 1;
+                                gameState.codes.push(code);
+                                completeRoom(code, `¡Completado en ${window.memoryAttempts} intentos!`);
+                            }, 1000);
+                        }
+                    }, 300);
+                } else {
+                    // No coinciden
+                    setTimeout(() => {
+                        card1.element.classList.remove('flipped');
+                        card2.element.classList.remove('flipped');
+                        window.flippedCards = [];
+                    }, 1000);
+                }
+            }
         }
 
-        function selectPattern(selected, correct) {
-            if (selected === correct) {
-                showFeedback('gimnasio-feedback', '¡Perfecto! Has encontrado el patrón.', true);
+        // ==================== SALA 4: LABORATORIO ====================
+        function createLaboratorioRoom() {
+            const content = levelContent[gameState.level].laboratorio;
+            const container = document.getElementById('room-container');
+            
+            container.innerHTML = `
+                <div class="room">
+                    <h2 class="room-title">🔬 El Laboratorio Matemático</h2>
+                    <p class="room-subtitle">Resuelve las operaciones para abrir la puerta</p>
+                    
+                    <div class="puzzle-container">
+                        ${content.map((op, i) => `
+                            <div class="operation-item">
+                                <span>${op.problem}</span>
+                                <span>=</span>
+                                <input type="number" class="operation-input" id="op-${i}" placeholder="?">
+                            </div>
+                        `).join('')}
+
+                        <div id="laboratorio-feedback"></div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn btn-hint" onclick="showHint(3)">💡 Pedir Pista</button>
+                        <button class="btn btn-success" onclick="checkLaboratorio()">✓ Comprobar</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function checkLaboratorio() {
+            const content = levelContent[gameState.level].laboratorio;
+            let allCorrect = true;
+
+            content.forEach((op, i) => {
+                const input = document.getElementById(`op-${i}`);
+                const userAnswer = parseInt(input.value);
+                
+                if (userAnswer === op.answer) {
+                    input.style.borderColor = '#28a745';
+                    input.style.background = '#d4edda';
+                } else {
+                    input.style.borderColor = '#dc3545';
+                    input.style.background = '#f8d7da';
+                    allCorrect = false;
+                }
+            });
+
+            if (allCorrect) {
+                showFeedback('laboratorio-feedback', '¡Todas las operaciones correctas!', true);
+                setTimeout(() => {
+                    const code = Math.floor(Math.random() * 9) + 1;
+                    gameState.codes.push(code);
+                    completeRoom(code, "¡Eres un genio matemático!");
+                }, 1000);
+            } else {
+                applyPenalty();
+                showFeedback('laboratorio-feedback', '❌ Algunas respuestas son incorrectas. -5 minutos.', false);
+            }
+        }
+
+        // ==================== SALA 5: AHORCADO (NUEVA) ====================
+        function createAhorcadoRoom() {
+            const words = hangmanWords[gameState.level];
+            const wordData = words[Math.floor(Math.random() * words.length)];
+            
+            window.hangmanWord = wordData.word;
+            window.hangmanCategory = wordData.category;
+            window.hangmanGuessed = [];
+            window.hangmanErrors = 0;
+            
+            const container = document.getElementById('room-container');
+            
+            container.innerHTML = `
+                <div class="room">
+                    <h2 class="room-title">🎈 La Sala del Globo</h2>
+                    <p class="room-subtitle">Adivina la palabra antes de que el globo explote</p>
+                    
+                    <div class="puzzle-container">
+                        <div class="hangman-category">Categoría: <strong>${wordData.category}</strong></div>
+                        
+                        <div class="hangman-container">
+                            <div class="balloon-container">
+                                <div class="balloon" id="balloon">🎈</div>
+                                <div id="explosion-text"></div>
+                            </div>
+                            
+                            <div>
+                                <div class="word-display" id="word-display">
+                                    ${wordData.word.split('').map(() => '<div class="letter-box">_</div>').join('')}
+                                </div>
+                                
+                                <p style="text-align: center; color: #666;">Errores: <span id="error-count">0</span>/6</p>
+                                
+                                <div class="keyboard" id="keyboard">
+                                    ${'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ'.split('').map(letter => 
+                                        `<button class="key" onclick="guessLetter('${letter}')">${letter}</button>`
+                                    ).join('')}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="ahorcado-feedback"></div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn btn-hint" onclick="showHint(4)">💡 Pedir Pista</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function guessLetter(letter) {
+            if (window.hangmanGuessed.includes(letter)) return;
+            
+            window.hangmanGuessed.push(letter);
+            const key = document.querySelector(`.key:not(:disabled)`);
+            const allKeys = document.querySelectorAll('.key');
+            allKeys.forEach(k => {
+                if (k.textContent === letter) {
+                    k.disabled = true;
+                }
+            });
+            
+            if (window.hangmanWord.includes(letter)) {
+                // Letra correcta
+                document.querySelectorAll('.key').forEach(k => {
+                    if (k.textContent === letter) k.classList.add('correct');
+                });
+                
+                updateWordDisplay();
+                
+                // Verificar si ganó
+                const displayLetters = document.querySelectorAll('.letter-box');
+                const allRevealed = [...displayLetters].every(box => box.textContent !== '_');
+                
+                if (allRevealed) {
+                    showFeedback('ahorcado-feedback', '¡Felicidades! Has adivinado la palabra.', true);
+                    setTimeout(() => {
+                        const code = Math.floor(Math.random() * 9) + 1;
+                        gameState.codes.push(code);
+                        completeRoom(code, `¡La palabra era "${window.hangmanWord}"!`);
+                    }, 1000);
+                }
+            } else {
+                // Letra incorrecta
+                window.hangmanErrors++;
+                document.getElementById('error-count').textContent = window.hangmanErrors;
+                document.querySelectorAll('.key').forEach(k => {
+                    if (k.textContent === letter) k.classList.add('wrong');
+                });
+                
+                // Actualizar globo
+                const balloon = document.getElementById('balloon');
+                balloon.className = 'balloon stage-' + window.hangmanErrors;
+                
+                if (window.hangmanErrors >= 6) {
+                    // ¡Explotó!
+                    setTimeout(() => {
+                        balloon.style.display = 'none';
+                        document.getElementById('explosion-text').innerHTML = '<span class="explosion-text">💥 BOOM!</span>';
+                        
+                        // Revelar palabra
+                        const letters = window.hangmanWord.split('');
+                        const boxes = document.querySelectorAll('.letter-box');
+                        letters.forEach((letter, i) => {
+                            boxes[i].textContent = letter;
+                            boxes[i].style.color = '#dc3545';
+                        });
+                        
+                        applyPenalty();
+                        showFeedback('ahorcado-feedback', `❌ ¡El globo explotó! La palabra era "${window.hangmanWord}". -5 minutos.`, false);
+                        
+                        // Dar otra oportunidad
+                        setTimeout(() => {
+                            createAhorcadoRoom();
+                        }, 3000);
+                    }, 500);
+                }
+            }
+        }
+
+        function updateWordDisplay() {
+            const letters = window.hangmanWord.split('');
+            const boxes = document.querySelectorAll('.letter-box');
+            
+            letters.forEach((letter, i) => {
+                if (window.hangmanGuessed.includes(letter)) {
+                    boxes[i].textContent = letter;
+                }
+            });
+        }
+
+        // ==================== SALA 6: BALANZA (NUEVA) ====================
+        function createBalanzaRoom() {
+            const puzzles = balancePuzzles[gameState.level];
+            const puzzle = puzzles[Math.floor(Math.random() * puzzles.length)];
+            
+            window.balanzaPuzzle = puzzle;
+            window.balanzaSelected = null;
+            
+            const container = document.getElementById('room-container');
+            
+            container.innerHTML = `
+                <div class="room">
+                    <h2 class="room-title">⚖️ La Sala de la Balanza</h2>
+                    <p class="room-subtitle">Descubre el valor de cada objeto</p>
+                    
+                    <div class="puzzle-container">
+                        <div class="balance-puzzle">
+                            ${puzzle.equations.map(eq => `
+                                <div class="balance-equation">
+                                    <span class="balance-item">${eq.left}</span>
+                                    <span>=</span>
+                                    <span class="balance-item">${eq.right}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                        
+                        <div class="balance-question">${puzzle.question}</div>
+                        
+                        <div class="balance-options">
+                            ${puzzle.options.map(opt => `
+                                <div class="balance-option" data-value="${opt}" onclick="selectBalanza(${opt})">${opt}</div>
+                            `).join('')}
+                        </div>
+
+                        <div id="balanza-feedback"></div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn btn-hint" onclick="showHint(5)">💡 Pedir Pista</button>
+                        <button class="btn btn-success" onclick="checkBalanza()">✓ Comprobar</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function selectBalanza(value) {
+            document.querySelectorAll('.balance-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            document.querySelector(`.balance-option[data-value="${value}"]`).classList.add('selected');
+            window.balanzaSelected = value;
+        }
+
+        function checkBalanza() {
+            if (window.balanzaSelected === null) {
+                showFeedback('balanza-feedback', 'Selecciona una respuesta primero', false);
+                return;
+            }
+
+            const options = document.querySelectorAll('.balance-option');
+            
+            if (window.balanzaSelected === window.balanzaPuzzle.answer) {
+                options.forEach(opt => {
+                    if (parseInt(opt.dataset.value) === window.balanzaPuzzle.answer) {
+                        opt.classList.add('correct');
+                    }
+                });
+                showFeedback('balanza-feedback', '¡Correcto! Has resuelto la ecuación.', true);
                 setTimeout(() => {
                     const code = Math.floor(Math.random() * 9) + 1;
                     gameState.codes.push(code);
                     completeRoom(code, "¡Excelente razonamiento lógico!");
                 }, 1000);
             } else {
+                options.forEach(opt => {
+                    opt.classList.remove('selected');
+                    if (parseInt(opt.dataset.value) === window.balanzaSelected) {
+                        opt.classList.add('incorrect');
+                    }
+                });
                 applyPenalty();
-                showFeedback('gimnasio-feedback', '❌ Ese no es el elemento correcto. -5 minutos', false);
+                showFeedback('balanza-feedback', '❌ Esa no es la respuesta correcta. -5 minutos. Revisa las ecuaciones.', false);
+                window.balanzaSelected = null;
             }
         }
 
+        // ==================== SALA 7: CIENCIAS ====================
         function createCienciasRoom() {
             const content = levelContent[gameState.level].ciencias;
             const container = document.getElementById('room-container');
@@ -1525,23 +2092,18 @@
             
             container.innerHTML = `
                 <div class="room">
-                    <h2 class="room-title">🌍 La Sala de Ciencias</h2>
-                    <p class="room-subtitle">Responde las preguntas científicas (pueden tener varias respuestas correctas)</p>
+                    <h2 class="room-title">🔬 El Laboratorio de Ciencias</h2>
+                    <p class="room-subtitle">Responde las preguntas científicas (puede haber varias respuestas correctas)</p>
                     
                     <div class="puzzle-container">
-                        ${content.map((question, qIndex) => `
-                            <div style="margin: 30px 0;">
-                                <h3 style="text-align: center; color: #667eea; margin-bottom: 20px;">
-                                    ${question.question}
-                                </h3>
-                                <div class="science-grid" id="science-q${qIndex}">
-                                    ${question.answers.map((answer, aIndex) => `
+                        ${content.map((q, qIndex) => `
+                            <div class="science-question" id="science-q${qIndex}">
+                                <h3>${q.question}</h3>
+                                <div class="science-options">
+                                    ${q.answers.map((answer, aIndex) => `
                                         <div class="science-card" data-qindex="${qIndex}" data-aindex="${aIndex}"
                                              onclick="toggleScienceAnswer(${qIndex}, ${aIndex})">
-                                            <div style="font-size: 3em; margin-bottom: 10px;">
-                                                ${getScienceIcon(answer)}
-                                            </div>
-                                            <p style="font-weight: bold;">${answer}</p>
+                                            ${answer}
                                         </div>
                                     `).join('')}
                                 </div>
@@ -1552,40 +2114,26 @@
                     </div>
 
                     <div class="action-buttons">
-                        <button class="btn btn-hint" onclick="showHint(3)">💡 Pedir Pista</button>
-                        <button class="btn btn-success" onclick="checkCiencias()">
-                            ✓ Comprobar Respuestas
-                        </button>
+                        <button class="btn btn-hint" onclick="showHint(6)">💡 Pedir Pista</button>
+                        <button class="btn btn-success" onclick="checkCiencias()">✓ Comprobar</button>
                     </div>
                 </div>
             `;
         }
 
-        function getScienceIcon(answer) {
-            const icons = {
-                'Agua': '💧', 'Luz': '☀️', 'Tierra': '🌱', 'Piedras': '🪨',
-                'Pájaro': '🐦', 'Perro': '🐕', 'Pez': '🐟',
-                'Sólido': '🧊', 'Líquido': '💧', 'Gaseoso': '💨', 'Gas': '💨',
-                'Mercurio': '☿️', 'Venus': '♀️', 'Tierra': '🌍',
-                'Solar': '☀️', 'Eólica': '💨', 'Nuclear': '⚛️',
-                'Corazón': '❤️', 'Pulmón': '🫁', 'Hígado': '🫀'
-            };
-            return icons[answer] || '📚';
-        }
-
-        function toggleScienceAnswer(questionIndex, answerIndex) {
-            if (!window.scienceAnswers[questionIndex]) {
-                window.scienceAnswers[questionIndex] = [];
+        function toggleScienceAnswer(qIndex, aIndex) {
+            if (!window.scienceAnswers[qIndex]) {
+                window.scienceAnswers[qIndex] = [];
             }
-
-            const card = document.querySelector(`#science-q${questionIndex} .science-card[data-aindex="${answerIndex}"]`);
             
-            if (window.scienceAnswers[questionIndex].includes(answerIndex)) {
-                const index = window.scienceAnswers[questionIndex].indexOf(answerIndex);
-                window.scienceAnswers[questionIndex].splice(index, 1);
+            const card = document.querySelector(`#science-q${qIndex} .science-card[data-aindex="${aIndex}"]`);
+            const idx = window.scienceAnswers[qIndex].indexOf(aIndex);
+            
+            if (idx > -1) {
+                window.scienceAnswers[qIndex].splice(idx, 1);
                 card.classList.remove('selected');
             } else {
-                window.scienceAnswers[questionIndex].push(answerIndex);
+                window.scienceAnswers[qIndex].push(aIndex);
                 card.classList.add('selected');
             }
         }
@@ -1594,11 +2142,10 @@
             const content = levelContent[gameState.level].ciencias;
             let allCorrect = true;
 
-            content.forEach((question, qIndex) => {
+            content.forEach((q, qIndex) => {
                 const userAnswers = window.scienceAnswers[qIndex] || [];
-                const correctAnswers = question.correct;
+                const correctAnswers = q.correct;
 
-                // Ordenar ambos arrays para comparar
                 const userSorted = [...userAnswers].sort((a, b) => a - b);
                 const correctSorted = [...correctAnswers].sort((a, b) => a - b);
                 
@@ -1627,10 +2174,11 @@
                 }, 1000);
             } else {
                 applyPenalty();
-                showFeedback('ciencias-feedback', '❌ Algunas respuestas no son correctas. -5 minutos. Revisa las marcadas en rojo.', false);
+                showFeedback('ciencias-feedback', '❌ Algunas respuestas no son correctas. -5 minutos.', false);
             }
         }
 
+        // ==================== SALA 8: CANDADOS ====================
         function createCandadosRoom() {
             const puzzle = padlockPuzzles[gameState.level];
             const container = document.getElementById('room-container');
@@ -1638,7 +2186,7 @@
             container.innerHTML = `
                 <div class="room">
                     <h2 class="room-title">🔐 La Sala de los Candados</h2>
-                    <p class="room-subtitle">Descifra el código secreto usando las pistas de cada candado</p>
+                    <p class="room-subtitle">Descifra el código secreto usando las pistas</p>
                     
                     <div class="puzzle-container">
                         <div class="padlock-container">
@@ -1674,7 +2222,7 @@
                     </div>
 
                     <div class="action-buttons">
-                        <button class="btn btn-hint" onclick="showHint(4)">💡 Pedir Pista</button>
+                        <button class="btn btn-hint" onclick="showHint(7)">💡 Pedir Pista</button>
                         <button class="btn btn-success" onclick="checkCandados()">🔓 Abrir Candado</button>
                     </div>
                 </div>
@@ -1710,7 +2258,7 @@
                 }, 1000);
             } else {
                 applyPenalty();
-                showFeedback('candados-feedback', '❌ Código incorrecto. -5 minutos. Analiza las pistas de nuevo.', false);
+                showFeedback('candados-feedback', '❌ Código incorrecto. -5 minutos.', false);
                 for (let i = 0; i < 3; i++) {
                     document.getElementById(`padlock-${i}`).value = '';
                 }
@@ -1718,22 +2266,21 @@
             }
         }
 
+        // ==================== SALA 9: FAMILIA ====================
         function createFamiliaRoom() {
             const container = document.getElementById('room-container');
             
-            // Seleccionar 3 preguntas aleatorias del nivel apropiado
             const levelQuestions = familyQuestionsPool.filter(q => q.level === gameState.level);
             const shuffled = levelQuestions.sort(() => Math.random() - 0.5);
             const selectedQuestions = shuffled.slice(0, 3);
             
             window.familyQuestions = selectedQuestions;
             window.familyAnswers = {};
-            window.familyCorrect = 0;
             
             container.innerHTML = `
                 <div class="room">
                     <h2 class="room-title">👨‍👩‍👧‍👦 La Sala de la Familia</h2>
-                    <p class="room-subtitle">Resuelve estos acertijos de parentesco familiar</p>
+                    <p class="room-subtitle">Resuelve estos acertijos de parentesco</p>
                     
                     <div class="puzzle-container">
                         ${selectedQuestions.map((q, qIndex) => `
@@ -1747,7 +2294,6 @@
                                         </div>
                                     `).join('')}
                                 </div>
-                                <div id="family-feedback-${qIndex}" style="margin-top: 15px;"></div>
                             </div>
                         `).join('')}
 
@@ -1755,20 +2301,18 @@
                     </div>
 
                     <div class="action-buttons">
-                        <button class="btn btn-hint" onclick="showHint(5)">💡 Pedir Pista</button>
-                        <button class="btn btn-success" onclick="checkFamilia()">✓ Comprobar Respuestas</button>
+                        <button class="btn btn-hint" onclick="showHint(8)">💡 Pedir Pista</button>
+                        <button class="btn btn-success" onclick="checkFamilia()">✓ Comprobar</button>
                     </div>
                 </div>
             `;
         }
 
         function selectFamilyAnswer(qIndex, oIndex) {
-            // Deseleccionar otras opciones de esta pregunta
             document.querySelectorAll(`#family-q${qIndex} .family-option`).forEach(opt => {
                 opt.classList.remove('selected');
             });
             
-            // Seleccionar esta opción
             const option = document.querySelector(`#family-q${qIndex} .family-option[data-oindex="${oIndex}"]`);
             option.classList.add('selected');
             
@@ -1777,7 +2321,7 @@
 
         function checkFamilia() {
             if (Object.keys(window.familyAnswers).length !== 3) {
-                showFeedback('familia-feedback', 'Responde las 3 preguntas antes de comprobar', false);
+                showFeedback('familia-feedback', 'Responde las 3 preguntas', false);
                 return;
             }
 
@@ -1810,17 +2354,18 @@
                 }, 1000);
             } else {
                 applyPenalty();
-                showFeedback('familia-feedback', '❌ Algunas respuestas son incorrectas. -5 minutos. Las correctas están en verde.', false);
+                showFeedback('familia-feedback', '❌ Algunas respuestas son incorrectas. -5 minutos.', false);
             }
         }
 
+        // ==================== SALA 10: TESORO ====================
         function createTesoroRoom() {
             const container = document.getElementById('room-container');
             
             container.innerHTML = `
                 <div class="room treasure-room">
                     <h2 class="room-title">💎 La Sala del Tesoro</h2>
-                    <p class="room-subtitle">Introduce el código de ${gameState.totalRooms - 1} cifras que has descubierto</p>
+                    <p class="room-subtitle">Introduce el código de ${gameState.codes.length} cifras</p>
                     
                     <div class="puzzle-container">
                         <div class="treasure-chest">🎁</div>
@@ -1840,7 +2385,7 @@
                     </div>
 
                     <div class="action-buttons">
-                        <button class="btn btn-hint" onclick="showHint(6)">💡 Pedir Pista</button>
+                        <button class="btn btn-hint" onclick="showHint(9)">💡 Pedir Pista</button>
                         <button class="btn btn-success" onclick="checkTreasureCode()">
                             🔓 Abrir Cofre
                         </button>
@@ -1882,22 +2427,17 @@
                 }, 2000);
             } else {
                 applyPenalty();
-                showFeedback('tesoro-feedback', '❌ Código incorrecto. -5 minutos. Revisa los números que obtuviste en cada sala.', false);
+                showFeedback('tesoro-feedback', '❌ Código incorrecto. -5 minutos.', false);
             }
         }
 
+        // ==================== FUNCIONES DE UTILIDAD ====================
         function showFeedback(elementId, message, isCorrect) {
             const feedback = document.getElementById(elementId);
             feedback.innerHTML = `<div class="feedback ${isCorrect ? 'correct' : 'incorrect'}">${message}</div>`;
             setTimeout(() => {
                 feedback.innerHTML = '';
             }, 4000);
-        }
-
-        function showTemporaryMessage(message) {
-            const modal = document.getElementById('hint-modal');
-            document.getElementById('hint-text').textContent = message;
-            modal.classList.add('show');
         }
 
         function completeRoom(code, message) {
@@ -1928,12 +2468,12 @@
 
         function showHint(roomIndex) {
             if (gameState.hintsLeft <= 0) {
-                alert('No te quedan más pistas disponibles');
+                alert('No te quedan más pistas');
                 return;
             }
 
             gameState.hintsLeft--;
-            gameState.timeRemaining -= 120; // Penalización de 2 minutos
+            gameState.timeRemaining -= 120;
             document.getElementById('hints-left').textContent = gameState.hintsLeft;
 
             const hintText = hints[gameState.level - 1][roomIndex];
@@ -1943,12 +2483,14 @@
 
         function showCapitulinHelp() {
             const messages = [
-                "¡Hola! Soy Capitulín. ¿Necesitas ayuda? Recuerda que puedes usar el botón de pistas en cada sala.",
-                "¡Ánimo! Estás haciendo un gran trabajo. Lee bien cada pregunta antes de responder.",
-                "No te rindas. Si algo es difícil, tómate tu tiempo para pensar.",
-                "¡Vas muy bien! Cada sala que completes te acerca más al tesoro.",
-                "Recuerda: ¡cuidado con fallar! Cada error te quita 5 minutos. ¡Piensa bien antes de responder!",
-                "En la sala de candados, elimina primero los números que seguro no están."
+                "¡Hola! Soy Capitulín. ¿Necesitas ayuda? Usa el botón de pistas en cada sala.",
+                "¡Ánimo! Estás haciendo un gran trabajo. Lee bien cada pregunta.",
+                "No te rindas. Si algo es difícil, tómate tu tiempo.",
+                "¡Vas muy bien! Cada sala te acerca más al tesoro.",
+                "¡Cuidado con fallar! Cada error te quita 5 minutos.",
+                "En el ahorcado, empieza por las vocales: A, E, I, O, U.",
+                "En la balanza, sustituye los valores que ya conoces.",
+                "En la memoria, intenta recordar las posiciones."
             ];
             const randomMessage = messages[Math.floor(Math.random() * messages.length)];
             document.getElementById('hint-text').textContent = randomMessage;
@@ -1978,11 +2520,11 @@
 
         function gameOver() {
             clearInterval(gameState.timerInterval);
-            alert('¡Se acabó el tiempo! Pero no te preocupes, puedes intentarlo de nuevo.');
+            alert('¡Se acabó el tiempo! Puedes intentarlo de nuevo.');
             location.reload();
         }
 
-        // Prevent drag on other elements
+        // Eventos de drag & drop
         document.addEventListener('dragover', (e) => {
             if (!e.target.classList.contains('drop-zone')) {
                 e.preventDefault();
